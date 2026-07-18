@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>隐私政策 · 发前检查</title>
+    <style>
+        /* 全局重置 & 字体 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 24px 20px 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .policy-card {
+            max-width: 680px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 40px 32px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 12px 40px;
+            }
+            .policy-card {
+                padding: 28px 20px;
+                border-radius: 20px;
+            }
+        }
+
+        /* 头部 */
+        .header {
+            margin-bottom: 32px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .app-name {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-name span {
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 2px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .tagline {
+            font-size: 15px;
+            color: #64748b;
+            margin-top: 6px;
+            font-weight: 400;
+        }
+
+        .update-badge {
+            display: inline-block;
+            margin-top: 12px;
+            background: #f1f5f9;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #334155;
+            letter-spacing: 0.2px;
+        }
+
+        /* 通用标题 */
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 32px 0 14px 0;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-icon {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        /* 列表 & 段落 */
+        p {
+            margin-bottom: 14px;
+            color: #1e293b;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 6px 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 6px;
+            top: 0;
+            color: #4f46e5;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        /* 特殊高亮块 — 不上传数据 */
+        .highlight-box {
+            background: #f1f5f9;
+            border-left: 4px solid #4f46e5;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 20px 0 24px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        /* 权限 & 存储 双列布局 (小屏自动堆叠) */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 24px;
+            margin: 16px 0 8px 0;
+        }
+
+        @media (max-width: 500px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+
+        .grid-item {
+            background: #f8fafc;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1px solid #eef2f6;
+        }
+
+        .grid-item .label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .grid-item .desc {
+            font-size: 14px;
+            color: #475569;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* 联系我们 */
+        .contact-box {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin: 28px 0 6px 0;
+            border: 1px solid #eef2f6;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .contact-box .icon {
+            font-size: 24px;
+        }
+
+        .contact-box .text {
+            font-size: 15px;
+            color: #1e293b;
+            flex: 1;
+        }
+
+        .contact-box .text strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .contact-box .badge {
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 4px 14px;
+            border-radius: 30px;
+            white-space: nowrap;
+        }
+
+        /* 小分割线 */
+        .divider-light {
+            height: 1px;
+            background: #eef2f6;
+            margin: 28px 0 4px 0;
+        }
+
+        /* 底部脚标 */
+        .footer-note {
+            margin-top: 32px;
+            font-size: 13px;
+            color: #94a3b8;
+            text-align: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 24px;
+            letter-spacing: 0.2px;
+        }
+
+        .footer-note a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* 微调 */
+        .mt-1 {
+            margin-top: 4px;
+        }
+        .mb-0 {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="policy-card">
+
+        <!-- ===== 头部 ===== -->
+        <div class="header">
+            <div class="app-name">
+                发前检查
+                <span>Pro</span>
+            </div>
+            <div class="tagline">我们尽量把图片处理留在设备本地。</div>
+            <div class="update-badge">📅 最后更新：2026-07-18</div>
+        </div>
+
+        <!-- ===== 1. 我们处理什么 ===== -->
+        <h2>
+            <span class="section-icon">📂</span> 我们处理什么
+        </h2>
+        <ul>
+            <li>你主动拍摄或导入的图片。</li>
+            <li>OCR 识别结果、手动打码内容和导出文件。</li>
+            <li>应用内购买状态，仅用于解锁 Pro 功能。</li>
+        </ul>
+
+        <!-- ===== 2. 我们如何使用这些信息 ===== -->
+        <h2>
+            <span class="section-icon">⚙️</span> 我们如何使用这些信息
+        </h2>
+        <ul>
+            <li>用于在设备上完成文字识别、敏感信息标记和图片或 PDF 导出。</li>
+            <li>用于保存历史记录和恢复已购买的 Pro 权益。</li>
+            <li>用于响应你主动发起的保存、分享或恢复购买操作。</li>
+        </ul>
+
+        <!-- ===== 3. 我们是否上传数据 (高亮) ===== -->
+        <h2>
+            <span class="section-icon">🔒</span> 我们是否上传数据
+        </h2>
+        <div class="highlight-box">
+            <p><strong>✅ 当前版本不建立账号</strong>，也不主动收集广告或分析数据。</p>
+            <p><strong>✅ 当前版本不主动把你的图片上传到我们的服务器。</strong></p>
+            <p><strong>✅ 内购由 Apple 的系统完成</strong>，我们不会拿到你的银行卡信息。</p>
+        </div>
+
+        <!-- ===== 4. 权限说明 ===== -->
+        <h2>
+            <span class="section-icon">📷</span> 权限说明
+        </h2>
+        <div class="grid-2col">
+            <div class="grid-item">
+                <span class="label">📸 相机权限</span>
+                <p class="desc">仅用于拍摄需要脱敏的图片。</p>
+            </div>
+            <div class="grid-item">
+                <span class="label">🖼️ 相册权限</span>
+                <p class="desc">仅用于导入图片或保存脱敏后的结果。</p>
+            </div>
+        </div>
+
+        <!-- ===== 5. 本地存储 ===== -->
+        <h2>
+            <span class="section-icon">💾</span> 本地存储
+        </h2>
+        <ul>
+            <li>历史记录和购买状态可能保存在你的设备本地，用于恢复和查看。</li>
+            <li>导出的图片或 PDF 会由你自行决定保存和分享。</li>
+        </ul>
+
+        <!-- ===== 6. 联系我们 ===== -->
+        <h2>
+            <span class="section-icon">📬</span> 联系我们
+        </h2>
+        <div class="contact-box">
+            <span class="icon">✉️</span>
+            <span class="text">
+                <strong>对本政策有疑问？</strong> 请通过 App Store 页面中的开发者联系方式与我们联系。
+            </span>
+            <span class="badge">随时沟通</span>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            <span>🔐 你的隐私 · 我们用心守护</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
